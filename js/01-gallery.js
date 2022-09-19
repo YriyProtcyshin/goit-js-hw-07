@@ -13,7 +13,7 @@ galleryDivRef.addEventListener('click', getUrlBigImage);
 //                                   function declaration
 // ===========================================================================================
 
-function creatingAndRenderingMarkup(arrItems, galleryDiv) {
+function creatingAndRenderingMarkup(arrItems, galleryDivRef) {
   const divImageList = arrItems
     .map(({ preview, original, description }) => {
       return `<div class="gallery__item">
@@ -29,7 +29,7 @@ function creatingAndRenderingMarkup(arrItems, galleryDiv) {
     })
     .join('');
 
-  galleryDiv.innerHTML = divImageList;
+  galleryDivRef.innerHTML = divImageList;
 }
 
 // ----------------   получение url большого изображения запуск модального окна ------------
@@ -55,7 +55,6 @@ function openModal(imageUrl) {
 function pressEscapeOn(event) {
   if (event.code === 'Escape') {
     instance.close();
-    console.log('press Escape');
   }
   window.removeEventListener('keydown', pressEscapeOn);
 }
