@@ -47,14 +47,14 @@ let instance = null;
 
 function openModal(imageUrl) {
   instance = basicLightbox.create(`<img width="1200" height="900" src="${imageUrl}">`);
-  window.addEventListener('keydown', pressEscapeOn);
+  window.addEventListener('keydown', onCloseModal);
   instance.show();
 }
 
 //---------------------- Закрытие модального окны кликом кнопки Escape ------------------------
-function pressEscapeOn(event) {
+function onCloseModal(event) {
   if (event.code === 'Escape') {
     instance.close();
+    window.removeEventListener('keydown', onCloseModal);
   }
-  window.removeEventListener('keydown', pressEscapeOn);
 }
